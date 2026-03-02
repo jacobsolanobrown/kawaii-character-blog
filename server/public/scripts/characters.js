@@ -2,14 +2,19 @@
 const renderCharacters = async () => {
   const response = await fetch('/characters');
   const data = await response.json();
+  console.log(data);
 
-  // create a main content element with id
-  const mainContent = document.createElementById('main-content');
+  // get the main content element from the DOM
+  const mainContent = document.getElementById('main-content');
+
+  // data.characters is the array of character objects that we sent from the
+  // server in the /characters route, so we can map through that array
+  // and create a card for each character to display on the page
 
   // create a conditional redering based on whetehr the data is loaded or not
-  if (date) {
+  if (data.characters) {
     // map through the data and create a card for each character
-    data.map((character) => {
+    data.characters.map((character) => {
       // create a card element for each character
       const card = document.createElement('div');
       card.className = 'card';
@@ -30,15 +35,15 @@ const renderCharacters = async () => {
       title.textContent = character.title;
       bottomContainer.appendChild(title);
 
+      // create a h4 element for the character's rating and set its text content to the character's rating
+      const rating = document.createElement('h4');
+      rating.textContent = `Rating: ${character.rating} Tier`;
+      bottomContainer.appendChild(rating);
+
       // create a p element for the character's description and set its text content to the character's description
       const description = document.createElement('p');
       description.textContent = character.description;
       bottomContainer.appendChild(description);
-
-      // create a p element for the character's rating and set its text content to the character's rating
-      const rating = document.createElement('h4');
-      rating.textContent = `Rating: ${character.rating} Tier`;
-      bottomContainer.appendChild(rating);
 
       // create an a element to link to the character's page and set its href attribute to the character's id
       const link = document.createElement('a');
@@ -63,3 +68,41 @@ const renderCharacters = async () => {
 };
 
 renderCharacters();
+
+// function to render a single character page based on the character id in the url
+const renderCharacter = async () => {
+  const requestedID = parseInt(window.location.href.split('/').pop());
+  // use fetch to get the character dat using the /characters endpoint
+  const respons = await fetch('/characters');
+  const data = await respons.json();
+  console.log(data);
+
+  // get character content dom element
+  const characterContent = document.getElementById('character-content');
+
+  // var to store the character that matches the requested id
+  let character;
+
+  // find the character in the data that matches the requested id and store it in the character variable
+  character = data.characters.find((character) => character.id === requestedID);
+  // if the character variable is not undefined, then we found a character that matches the requested id
+  // and we can render the character page, otherwise we can render a message that says the character was not found
+  if (character) {
+    document.getElementById('image').src = character.image;
+    document.getElementById('title').textContent = character.title;
+    document.getElementById('description').textContent = character.description;
+    document.getElementById('rating').textContent =
+      'Rating: ' + character.rating + ' Tier';
+    document.getElementById('ratingDescription').textContent =
+      'Why: ' + character.ratingDescription;
+    document.getElementById('rankingDate').textContent = character.rankingDate;
+  } 
+  else {
+    // create a message element to display that there was no data to load
+    const message = document.createElement('h2');
+    message.textContent = 'Couldnt find the character to display :(';
+    mainContent.appendChild(message);
+  }
+};
+
+renderCharacter();

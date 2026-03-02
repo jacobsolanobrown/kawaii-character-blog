@@ -8,3 +8,5 @@ each post has
 - a date of when the ranking was made 
 - a unique id 
 - a final ranking list among the other characters ranked (image) (optional - later)
+
+the css sucks omg but i dont have time 

@@ -67,4 +67,50 @@ const renderCharacters = async () => {
   }
 };
 
-renderCharacters();
+const requestedUrl = window.location.href.split('/').pop();
+
+//  if requestedUrl is not null. If it isn't null
+// (there is something after the /), set the window.location.href to the 404.html page.
+if (requestedUrl) {
+  window.location.href = '../404.html';
+} else {
+  renderCharacters();
+}
+
+// function to render a single character page based on the character id in the url
+const renderCharacter = async () => {
+  const requestedID = parseInt(window.location.href.split('/').pop());
+  // use fetch to get the character dat using the /characters endpoint
+  const respons = await fetch('/characters');
+  const data = await respons.json();
+  console.log(data);
+
+  // get character content dom element
+  const characterContent = document.getElementById('character-content');
+
+  // var to store the character that matches the requested id
+  let character;
+
+  // find the character in the data that matches the requested id and store it in the character variable
+  character = data.characters.find((character) => character.id === requestedID);
+  console.log(character);
+  // if the character variable is not undefined, then we found a character that matches the requested id
+  // and we can render the character page, otherwise we can render a message that says the character was not found
+  if (character) {
+    document.getElementById('image').src = character.image;
+    document.getElementById('title').textContent = character.title;
+    document.getElementById('description').textContent = character.description;
+    document.getElementById('rating').textContent =
+      'Rating: ' + character.rating + ' Tier';
+    document.getElementById('ratingDescription').textContent =
+      'Why: ' + character.ratingDescription;
+    document.getElementById('rankingDate').textContent = character.rankingDate;
+  } else {
+    // create a message element to display that there was no data to load
+    const message = document.createElement('h2');
+    message.textContent = 'Couldnt find the character to display :(';
+    mainContent.appendChild(message);
+  }
+};
+
+renderCharacter();
