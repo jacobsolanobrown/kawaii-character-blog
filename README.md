@@ -2,7 +2,7 @@
 
 Submitted by: **Jacob Solano**
 
-About this web app: **This app shows ratings  **
+About this web app: **This app shows ratings of cute Japanese characters such as hello kitty or rilakkuma based on my opinions  **
 
 Time spent: **7** hours
 
@@ -16,7 +16,7 @@ The following **required** functionality is completed:
 - [X] **The web app displays at least five unique list items, each with at least three displayed attributes (such as title, text, and image)**
 - [X] **The user can click on each item in the list to see a detailed view of it, including all database fields**
   - [X] **Each detail view should be a unique endpoint, such as as `localhost:3000/bosses/crystalguardian` and `localhost:3000/mantislords`**
-  - [ ] *Note: When showing this feature in the video walkthrough, please show the unique URL for each detailed view. We will not be able to give points if we cannot see the implementation* 
+  - [X] *Note: When showing this feature in the video walkthrough, please show the unique URL for each detailed view. We will not be able to give points if we cannot see the implementation* 
 - [X] **The web app serves an appropriate 404 page when no matching route is defined**
 - [X] **The web app is styled using Picocss**
 
@@ -30,8 +30,6 @@ The following **additional** features are implemented:
 
 ## Video Walkthrough
 
-**Note: please be sure to 
-
 Here's a walkthrough of implemented required features:
 
 <img src='./walkthrough_draft1.gif' title='Gif Video Walkthrough' width='' alt='Video Walkthrough' />
@@ -44,7 +42,7 @@ I had challenges with routing especially with the 404 error routing check as it 
 
 ## License
 
-Copyright [2004] [Jacob Solano]
+Copyright [2026] [Jacob Solano]
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
