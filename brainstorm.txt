@@ -1,0 +1,10 @@
+this is a blog where each posts ranks a cute japanese character like hello kitty or chiikawa
+each post has 
+- a title (name of character)
+- an image of the character
+- a text description of character 
+- a rating (c-s tier)
+- a rating description expelaining rating
+- a date of when the ranking was made 
+- a unique id 
+- a final ranking list among the other characters ranked (image) (optional - later)
