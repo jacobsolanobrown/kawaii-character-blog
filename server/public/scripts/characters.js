@@ -67,20 +67,8 @@ const renderCharacters = async () => {
   }
 };
 
-const requestedUrl = window.location.href.split('/').pop();
-
-//  if requestedUrl is not null. If it isn't null
-// (there is something after the /), set the window.location.href to the 404.html page.
-if (requestedUrl) {
-  window.location.href = '../404.html';
-} else {
-  renderCharacters();
-}
-
-// function to render a single character page based on the character id in the url
 const renderCharacter = async () => {
-  const requestedID = parseInt(window.location.href.split('/').pop());
-  // use fetch to get the character dat using the /characters endpoint
+// use fetch to get the character dat using the /characters endpoint
   const response = await fetch('/characters');
   const data = await response.json();
   console.log(data);
@@ -115,6 +103,20 @@ const renderCharacter = async () => {
     message.textContent = 'Couldnt find the character to display :(';
     characterContent.appendChild(message);
   }
-};
+}
 
-renderCharacter();
+const requestedUrl = window.location.href.split('/').pop();
+const requestedID = parseInt(requestedUrl);
+const isValidCharacterId = !isNaN(requestedID) && requestedID > 0;
+
+// Check if we have a valid character ID in the URL
+if (isValidCharacterId) {
+  // Render single character page
+  renderCharacter();
+} else if (!requestedUrl) {
+  // Render character list homepage
+  renderCharacters();
+} else {
+  // Invalid URL pattern, redirect to 404
+  window.location.href = '../404.html';
+}

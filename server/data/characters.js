@@ -1,3 +1,5 @@
+// this is an object that contains an array of character objects, each with properties like id, title, image, description, rating, ratingDescription, and rankingDate
+// to make an array change it to characters: [ {character1}, {character2}, ...]
 const charactersData = {
   characters: [
     {
