@@ -19,7 +19,7 @@ The following **required** functionality is completed:
   - [X] *Note: When showing this feature in the video walkthrough, please show the unique URL for each detailed view. We will not be able to give points if we cannot see the implementation* 
 - [X] **The web app serves an appropriate 404 page when no matching route is defined**
 - [X] **The web app is styled using Picocss**
-- [X] **The web app is connected to a PostgreSQL database, with an appropriately structured database table for the list items.
+- [X] **The web app is connected to a PostgreSQL database, with an appropriately structured database table for the list items.**
 
 The following **optional** features are implemented:
 
@@ -39,9 +39,9 @@ GIF created with Kap !
 
 ## Notes
 
-I had challenges with routing especially with the 404 error routing check as it was effecting my data loading with unexpected behavior. 
+- I had challenges with routing especially with the 404 error routing check as it was effecting my data loading with unexpected behavior. 
 
-I can connect and add to the postgressql database but I have a bug where its not retrieving the data rows.
+- I fixed a bug where my client could not connect to my backend but it arose since I changed the response data in the server from being an object to an array, where clientside, it was expecting an object so I just needed to change the type mismatch. But server works. 
 
 ## License
 

@@ -11,10 +11,15 @@ const renderCharacters = async () => {
   // server in the /characters route, so we can map through that array
   // and create a card for each character to display on the page
 
+
+  // ISSUE HERE - DATA MISMATCH SINCE SERVER RETURNS A DIRECT ARRAY WHERE PREVIOUSLY WE HAD AN 
+  // OBJECT BEING RETURNED - MUST CHANGE THIS TO JUST DATA INSTEAD OF DATA.CHARACTERS OR 
+  // CHANGE THE SERVER TO RETURN AN OBJECT WITH A CHARACTERS PROPERTY THAT CONTAINS THE ARRAY
+
   // create a conditional redering based on whetehr the data is loaded or not
-  if (data.characters) {
+  if (data) {
     // map through the data and create a card for each character
-    data.characters.map((character) => {
+    data.map((character) => {
       // create a card element for each character
       const card = document.createElement('div');
       card.className = 'card';
